@@ -1,4 +1,4 @@
-#also need to import magazine
+from article import Article
 class Author:
     def __init__(self,name):
         if not isinstance(name,str) or not name.strip():
