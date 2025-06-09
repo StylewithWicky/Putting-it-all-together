@@ -1,5 +1,9 @@
-from ..modules.author import Author
-from ..modules.Magazine import Magazine
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../')))
+
+from lib.modules.author import Author
+from lib.modules.Magazine import Magazine
 
 a1 = Author("Octavia Butler")
 a2 = Author("George Orwell")
@@ -16,7 +20,7 @@ a2.add_article(m1, "1984 Revisited")
 a2.add_article(m2, "Animal Farm Redux")
 
 # Queries
-print(m1.article_titles())            
+print(m1.article_title())            
 print(m1.contributors())              
 print(m1.contributing_authors())      
-print(a1.topic_areas())               
+print(a1.topic())               

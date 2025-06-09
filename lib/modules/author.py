@@ -1,8 +1,9 @@
-from article import Article
+from lib.modules.article import Article
+
 class Author:
     def __init__(self,name):
         if not isinstance(name,str) or not name.strip():
-            raise ValueError('')
+            raise ValueError('Name has to be a string and cannot be empty! ')
         self._name=name
         self._articles=[]
         
@@ -11,21 +12,21 @@ class Author:
         return self._name
     
     def articles(self):
-        return self._articles
+        return [article for article in Article.all() if article.author ==self]
     
     def magazine(self):
         return list({article.magazine for article in self._articles})
     
 
     def add_article(self,magazine,title):
-        from lib.modules.author import Articles
-        article=Articles(self,magazine,title)
+        from lib.modules.author import Article
+        article=Article(self,magazine,title)
         self._articles.append(article)
-        magazine._article.append(article)
+        magazine._articles.append(article)
         return(article)
     
     def topic(self):
-        return list({magazine.category for magazine in self.magazine})
+        return list({magazine.category for magazine in self.magazine()})
 
     
         
